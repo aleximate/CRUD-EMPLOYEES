@@ -1,0 +1,78 @@
+<button class="btn btn-primary" routerLink="/main">Regresar</button>
+<div class="container">
+  <h3 class="text-center">New employee</h3>
+  <form (ngSubmit) = "onSubmitForm()">
+    <div class="form-group">
+        <label>Name: </label>
+        <input type="text"
+        class ="form-control"
+        id = "name"
+        [(ngModel)] = "employees.name"
+        required
+        minlength="4"
+        maxlength="50"
+        name = "name"
+        #name="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf= "name.invalid && (name.dirty || name.touched)">
+      <div *ngIf ="name.errors?.['required']">
+        Write a name please
+      </div>
+      <div *ngIf = "name.errors?.['minlength']">
+        The name must have at least 4 characthers
+      </div>
+      <div *ngIf = "name.errors?.['maxlength']">
+        The name must have at most 10 characthers
+      </div>
+    </div>
+
+    <div class="form-group">
+        <label>Lastname: </label>
+        <input type="text"
+        class ="form-control"
+        id = "lastname"
+        [(ngModel)] = "employees.lastname"
+        required
+        minlength="2"
+        maxlength="20"
+        name = "lastname"
+        #lastname="ngModel">
+    </div>
+
+    <div class="alert alert-danger" *ngIf= "lastname.invalid && (lastname.dirty || lastname.touched)">
+      <div *ngIf ="lastname.errors?.['required']">
+        Write you lastname please
+      </div>
+      <div *ngIf = "lastname.errors?.['minlength']">
+        Must have at least 2 characthers
+      </div>
+      <div *ngIf = "lastname.errors?.['maxlength']">
+        Must have at most 20 characthers
+      </div>
+    </div>
+
+
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="text"
+        class ="form-control"
+        id = "email"
+        [(ngModel)] = "employees.email"
+        pattern ="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}"
+        required
+        name = "email"
+        #email="ngModel">
+    </div>
+    <div class="alert alert-danger" *ngIf= "email.invalid && (email.dirty || email.touched)">
+      <div *ngIf ="email.errors?.['required']">
+        Write your email please
+      </div>
+      <div *ngIf = "email.errors?.['pattern']">
+        Please write an email in this format: tupapi@gmail.com
+      </div>
+    </div>
+    <button class = "btn btn-success" type="submit">Submit</button>
+
+</form>
+
+

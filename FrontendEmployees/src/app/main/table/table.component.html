@@ -1,0 +1,26 @@
+
+<div class="container">
+  <h1 h3 class="text-center">EMPLOYEE'S REGISTER</h1>
+  <button class="btn btn-primary" routerLink="/Add employee">Add</button>
+  <table class="mt-5 table table-hover">
+    <thead>
+      <tr>
+        <th>NAME</th>
+        <th>LASTNAME</th>
+        <th>EMAIL</th>
+        <th>ACTIONS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let i of employees ">
+          <td>{{ i.name }}</td>
+          <td>{{ i.lastname }}</td>
+          <td>{{ i.email }}</td>
+          <td>
+            <button (click)="update(i.id)" class="btn btn-info">UPDATE</button>
+            <button (click)="delete(i.id)" class="btn btn-danger">DELETE</button>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
